@@ -1,8 +1,15 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, FlatList, SafeAreaView} from 'react-native';
+import {useSelector} from 'react-redux';
 
 function FavoritesScreen() {
-  return <Text>favorites</Text>;
+  const list = useSelector(s => s.favoriteList);
+
+  return (
+    <SafeAreaView>
+      <FlatList data={list} renderItem={({item}) => <Text>{item}</Text>}/>
+    </SafeAreaView>
+  )
 }
 
 export default FavoritesScreen;

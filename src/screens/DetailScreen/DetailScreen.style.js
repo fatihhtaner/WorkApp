@@ -39,13 +39,12 @@ export default StyleSheet.create({
   button_container: {
     flexDirection: 'row',
     alignSelf: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   button: {
     backgroundColor: '#ef5350',
-    width: Dimensions.get('window').width / 3,
+    width: Dimensions.get('window').width / 2.5,
     height: Dimensions.get('window').height / 18,
-    alignSelf: 'center',
     justifyContent: 'center',
     margin: 10,
     borderRadius: 10,

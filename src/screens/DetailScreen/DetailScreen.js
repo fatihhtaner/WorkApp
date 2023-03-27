@@ -1,15 +1,17 @@
 import React from 'react';
 import {
+  Alert,
   Text,
   useWindowDimensions,
   View,
   SafeAreaView,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import RenderHtml from 'react-native-render-html';
 import styles from './DetailScreen.style';
+import {useDispatch} from 'react-redux';
 
 function DetailScreen() {
   const route = useRoute();
@@ -17,6 +19,12 @@ function DetailScreen() {
 
   const source = {
     html: `${route.params.contents}`,
+  };
+
+  const dispatch = useDispatch();
+  const handleAdd = () => {
+    Alert.alert('Favorilere başarıyla eklendi!'),
+      dispatch({type: 'ADD_FAVORITE', payload: {favorite: route.params.name}});
   };
 
   return (
@@ -45,10 +53,12 @@ function DetailScreen() {
         </View>
         <View style={styles.button_container}>
           <TouchableOpacity style={styles.button}>
-            <Text style={{color: 'white'}}>Submit</Text>
+            <Text style={{color: 'white', alignSelf: 'center'}}>Submit</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={{color: 'white'}}>Favorite Job</Text>
+          <TouchableOpacity style={styles.button} onPress={handleAdd}>
+            <Text style={{color: 'white', alignSelf: 'center'}}>
+              Favorite Job
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
