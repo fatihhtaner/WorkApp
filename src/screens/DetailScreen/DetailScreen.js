@@ -12,6 +12,7 @@ import {useRoute} from '@react-navigation/native';
 import RenderHtml from 'react-native-render-html';
 import styles from './DetailScreen.style';
 import {useDispatch} from 'react-redux';
+import {addFavorite} from '../../redux/store/favoriteSlice';
 
 function DetailScreen() {
   const route = useRoute();
@@ -24,7 +25,11 @@ function DetailScreen() {
   const dispatch = useDispatch();
   const handleAdd = () => {
     Alert.alert('Favorilere başarıyla eklendi!'),
-      dispatch({type: 'ADD_FAVORITE', payload: {favorite: route.params.name}});
+      dispatch(
+        addFavorite({
+          favorite: route.params,
+        })
+      )
   };
 
   return (

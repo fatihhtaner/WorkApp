@@ -2,16 +2,17 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import FavoritesStack from './FavoritesStack/FavoritesStack';
-import JobStack from './JobStack/JobStack';
 import {NavigationContainer} from '@react-navigation/native';
-import UserProvider from '../context/Provider';
+import store from '../redux/store/store';
+import {Provider} from 'react-redux';
+import JobStack from './JobStack/JobStack';
+import FavoritesStack from './FavoritesStack/FavoritesStack'
 
 function Router() {
   const Drawer = createDrawerNavigator();
 
   return (
-    <UserProvider>
+    <Provider store={store}>
       <NavigationContainer>
         <Drawer.Navigator>
           <Drawer.Screen
@@ -37,7 +38,7 @@ function Router() {
           />
         </Drawer.Navigator>
       </NavigationContainer>
-    </UserProvider>
+    </Provider>
   );
 }
 

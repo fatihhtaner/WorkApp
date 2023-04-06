@@ -9,7 +9,7 @@ function FavoritesStack() {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
+      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} options={{headerShown: false}}/>
       <Stack.Screen name="DetailScreen" component={DetailScreen} />
     </Stack.Navigator>
   );
